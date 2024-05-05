@@ -3,16 +3,22 @@ package pageObject;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utils.TestBase;
 
 public class loginPage {
 	public WebDriver driver;
+	
 	public loginPage(WebDriver driver) {
 		this.driver=driver;
 	}
+	
 	
 	By emailTextbox= By.cssSelector("input#ap_email");
 	By continuebutton = By.xpath("//*[@class=\"a-button a-button-span12 a-button-primary\"]");
@@ -20,7 +26,7 @@ public class loginPage {
 	By loginbutton = By.cssSelector("input.a-button-input");
 	
 	public void logging() throws InterruptedException, IOException {
-		FileInputStream fis= new FileInputStream("C:\\Users\\2303442\\eclipse-workspace\\amazon\\src\\test\\resources\\global.properties");
+		FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\global.properties");
 		Properties prop=new Properties();
 		prop.load(fis);
 		String email=prop.getProperty("emailid");
@@ -29,6 +35,6 @@ public class loginPage {
 		driver.findElement(continuebutton).click();
 		driver.findElement(passwordTextbox).sendKeys(pass);
 		driver.findElement(loginbutton).click();
-		 Thread.sleep(3000);
+		 
 	}
 }

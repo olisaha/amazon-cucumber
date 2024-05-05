@@ -11,10 +11,10 @@ public class Hooks {
 this.testcontextsetup=testcontextsetup;
 }
 
-/*@After
+@After
 public void Afterscenario() throws IOException {
 	testcontextsetup.testbase.WebDriverManager().quit();;
 	
-}*/
+}
 
 }

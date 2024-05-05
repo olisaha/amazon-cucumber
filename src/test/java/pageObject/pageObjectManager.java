@@ -2,33 +2,40 @@ package pageObject;
 
 import org.openqa.selenium.WebDriver;
 
-public class pageObjectManager {
+import utils.utility;
+
+public class pageObjectmanager {
 	public homePage homepage;
 	public loginPage loginpage;
-	public searchedProductPage searchpage;
+	public searchedProductPage searchedproductpage;
 	public mycartPage mycartpage;
 	public WebDriver driver;
-	
-	public pageObjectManager(WebDriver driver) {
-		this.driver=driver;
+	utility utility;
+	public pageObjectmanager(WebDriver driver,utility utility)
+	{
+		this.driver = driver;
+		this.utility=utility;
 	}
+
 	
-	public homePage loadinghomepage() {
-		homepage= new homePage(driver);
+	public loginPage getloginpage()
+	{
+	
+	 loginpage= new loginPage(driver);
+	 return loginpage ;
+	}
+	public homePage gethomepage() {
+		homepage=new homePage(driver);
 		return homepage;
 	}
-   public loginPage loadingloginpage() {
-	   loginpage=new loginPage(driver);
-	   return loginpage;
-}
-   public searchedProductPage loadingsearchpage() {
-	   searchpage=new searchedProductPage(driver);
-	   return searchpage;
-}
-   public mycartPage loadingmycartpage() {
-	  mycartpage=new mycartPage(driver);
-	  return mycartpage;
-	  
-}
-  
+	
+	public searchedProductPage getsearchedproductpage() {
+		searchedproductpage=new searchedProductPage(driver,utility);
+		return searchedproductpage;
+	}
+	public mycartPage getmycartpage() {
+		mycartpage=new mycartPage(driver,utility);
+		return mycartpage ;
+	}
+
 }

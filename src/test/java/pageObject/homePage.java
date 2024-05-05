@@ -3,17 +3,21 @@ package pageObject;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class homePage {
 	public WebDriver driver;
 	public homePage(WebDriver driver) {
 		this.driver=driver;
+		
 	}
-	
+	By youraccountbutton=By.xpath("//a[text()='Your Account']");
 	By signinButton =By.xpath("//*[@id=\"nav-link-accountList\"]");
 	By searchTextbox= By.xpath("//input[@id=\"twotabsearchtextbox\"]");
 	By continuebutton= By.xpath("//*[@id=\"nav-search-submit-button\"]");
@@ -24,22 +28,23 @@ public class homePage {
 		return  driver.getTitle();
 
 	}
-public void gotologin() {
-	driver.findElement(signinButton).click();
-}
-public void dismissalert() {
-	//if (driver.findElement(allertdialogbox).) {
-	driver.findElement(dismissbutton).click();
+public void gotologin() throws InterruptedException {
+
+		driver.findElement(youraccountbutton).click();	
+		//wait.until(ExpectedConditions.elementToBeClickable(signinButton));
+		driver.findElement(signinButton).click();
 	}
 
+
+
 public void searchproduct() throws IOException {
-	FileInputStream fis= new FileInputStream("C:\\Users\\2303442\\eclipse-workspace\\amazon\\src\\test\\resources\\global.properties");
+	FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\global.properties");
 	Properties prop=new Properties();
 	prop.load(fis);
 	String product=prop.getProperty("product");
-	
+
 	driver.findElement(searchTextbox).sendKeys(product);
 	
 	driver.findElement(continuebutton).click();
-}
-}
+//}
+}}
