@@ -11,10 +11,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.utility;
+
 public class homePage {
 	public WebDriver driver;
-	public homePage(WebDriver driver) {
+	utility utility;
+	public homePage(WebDriver driver,utility utility) {
 		this.driver=driver;
+		this.utility=utility;
 		
 	}
 	By youraccountbutton=By.xpath("//a[text()='Your Account']");
@@ -29,9 +33,9 @@ public class homePage {
 
 	}
 public void gotologin() throws InterruptedException {
-
+utility.elementclickableexplicitwait(youraccountbutton);
 		driver.findElement(youraccountbutton).click();	
-		//wait.until(ExpectedConditions.elementToBeClickable(signinButton));
+utility.elementclickableexplicitwait(signinButton);		
 		driver.findElement(signinButton).click();
 	}
 
@@ -46,5 +50,5 @@ public void searchproduct() throws IOException {
 	driver.findElement(searchTextbox).sendKeys(product);
 	
 	driver.findElement(continuebutton).click();
-//}
+
 }}

@@ -39,11 +39,10 @@ public class mycartPage {
 	}
 
 	public void deleteallproduct() throws InterruptedException {
-		//Thread.sleep(3000);
+
 		utility.pageloadexplicitwait("Amazon.com Checkout");;
 		driver.navigate().back();
 		utility.pageloadexplicitwait("Amazon.com Shopping Cart");
-		System.out.println(driver.getTitle());
 		utility.explicitwait(deletebutton);
 		List<WebElement> productquantity = driver.findElements(deletebutton);
 		for (int i = productquantity.size(); i > 0; i--) {

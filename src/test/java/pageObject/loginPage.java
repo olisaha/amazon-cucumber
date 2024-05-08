@@ -25,15 +25,17 @@ public class loginPage {
 	By passwordTextbox = By.xpath("//*[@id=\"ap_password\"]");
 	By loginbutton = By.cssSelector("input.a-button-input");
 	
-	public void logging() throws InterruptedException, IOException {
-		FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\global.properties");
-		Properties prop=new Properties();
-		prop.load(fis);
-		String email=prop.getProperty("emailid");
-		String pass=prop.getProperty("password");
-		driver.findElement(emailTextbox).sendKeys(email);
+	public void passingemailid(String emailid) throws InterruptedException, IOException {
+	//	FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\global.properties");
+	//	Properties prop=new Properties();
+	//	prop.load(fis);
+//		String email=prop.getProperty("emailid");
+//		String pass=prop.getProperty("password");
+		driver.findElement(emailTextbox).sendKeys(emailid);
 		driver.findElement(continuebutton).click();
-		driver.findElement(passwordTextbox).sendKeys(pass);
+	}
+		public void passingpassword(String password) {
+		driver.findElement(passwordTextbox).sendKeys(password);
 		driver.findElement(loginbutton).click();
 		 
 	}

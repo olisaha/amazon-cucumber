@@ -25,7 +25,7 @@ public class pageObjectmanager {
 	 return loginpage ;
 	}
 	public homePage gethomepage() {
-		homepage=new homePage(driver);
+		homepage=new homePage(driver,utility);
 		return homepage;
 	}
 	
